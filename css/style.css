@@ -84,7 +84,7 @@ html
 }
 
 #homepage {
-    background-image: url("file://localhost/Users/lindyzeng/Desktop/lindyzeng.me/images/homepage.jpg");
+    background-image: url("images/homepage.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -233,7 +233,7 @@ html
 }
 
 #homepage {
-    background-image: url("file://localhost/Users/lindyzeng/Desktop/lindyzeng.me/IMG_2506.jpg");
+    background-image: url("images/homepage.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
