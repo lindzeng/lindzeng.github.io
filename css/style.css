@@ -84,7 +84,7 @@ html
 }
 
 #homepage {
-    background-image: url("file://localhost/Users/lindyzeng/lindzeng.github.io/images/homepage.jpg");
+    background-image: url("../images/homepage.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -233,7 +233,7 @@ html
 }
 
 #homepage {
-    background-image: url("file://localhost/Users/lindyzeng/lindzeng.github.io/images/homepage.jpg");
+    background-image: url("../images/homepage.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
