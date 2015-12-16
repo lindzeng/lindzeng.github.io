@@ -133,7 +133,7 @@ function initMap() {
   
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('right-panel'));
-   directionsDisplay2.setPanel(document.getElementById('right-panel-2'));
+  directionsDisplay2.setPanel(document.getElementById('right-panel-2'));
   
   var control = document.getElementById('floating-panel');
   control.style.display = 'block';
@@ -147,7 +147,7 @@ function initMap() {
         
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   var selectedMode = document.getElementById('mode').value;
-  if (selectedMode == "WALKING" || selectedMode == "BIKING") {
+  if ((selectedMode == "WALKING") || (selectedMode == "BIKING")) {
     directionsService.route({
       origin: start,
       destination: end,
