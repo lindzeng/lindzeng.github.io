@@ -96,11 +96,13 @@
       
     <div id="right-panel"></div>
     <div id="map"></div>
+    
+    <!-- THIS IS THE JAVASCRIPT PART -->
     <script>
-
-var start; //start location
-var end; //end location
+var start; // start location
+var end; // end location
         
+// Initialize the map.
 function initMap() {
   var directionsDisplay = new google.maps.DirectionsRenderer;
   var directionsService = new google.maps.DirectionsService;
@@ -133,15 +135,16 @@ function initMap() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
-  end = "282 2nd Street 4th floor, San Francisco, CA 94105"; //ClickTime office address
+  end = "282 2nd Street 4th floor, San Francisco, CA 94105"; // ClickTime office address
   
+  // What happens after selecting a method of travel.
   var onChangeHandler = function() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
 }
 
-        
+// Calculate and display the route to get to the office.
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   var selectedMode = document.getElementById('mode').value;
   directionsService.route({
@@ -156,7 +159,8 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     }
   });
 }
-        
+
+// Handle error if location services doesn't work.
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
