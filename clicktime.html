@@ -134,10 +134,35 @@ function initMap() {
     handleLocationError(false, infoWindow, map.getCenter());
   }
   end = "282 2nd Street 4th floor, San Francisco, CA 94105"; //ClickTime office address
+  
+  //Find a place that sells donuts and coffee that is near SF. (Don't want the coffee to get cold if you're running there!)
+  var request = {
+    location: end,
+    radius: '500',
+    query: 'donuts and coffee'
+  };
+
+  var service = new google.maps.places.PlacesService(map);
+  service.textSearch(request, callback);
+  
   var onChangeHandler = function() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
+}
+
+// Checks that the PlacesServiceStatus is OK, and adds a marker
+// using the place ID and location from the PlacesService.
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    var marker = new google.maps.Marker({
+      map: map,
+      place: {
+        placeId: results[0].place_id,
+        location: results[0].geometry.location
+      }
+    });
+  }
 }
         
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
