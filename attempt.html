@@ -150,7 +150,7 @@ function initMap() {
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   var selectedMode = document.getElementById('mode').value;
   if (selectedMode == "TRANSIT") {
-    directionsService.route({
+    directionsService2.route({
       origin: start,
       destination: waypoint,
       travelMode: google.maps.TravelMode[selectedMode]
