@@ -131,7 +131,7 @@ function initMap() {
   });
   start = "1 Dr Carlton B Goodlett Pl, San Francisco, CA 94102";
   end = "282 2nd Street 4th floor, San Francisco, CA 94105"; //ClickTime office address
-  //waypoint = "2760 24th St, San Francisco, CA 94110";
+  waypoint = "2760 24th St, San Francisco, CA 94110";
   
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('right-panel'));
@@ -152,7 +152,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   if (selectedMode == "TRANSIT") {
     directionsService.route({
       origin: start,
-      destination: "2760 24th St, San Francisco, CA 94110",
+      destination: waypoint,
       travelMode: google.maps.TravelMode[selectedMode]
     }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
@@ -162,7 +162,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     }
     });
     directionsService2.route({
-      origin: "2760 24th St, San Francisco, CA 94110",
+      origin: waypoint,
       destination: end,
       travelMode: google.maps.TravelMode[selectedMode]
     }, function(response, status) {
@@ -179,7 +179,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
       destination: end,
       waypoints: [
       {
-        location:"2760 24th St, San Francisco, CA 94110",
+        location: waypoint,
         stopover:true
       }],
     provideRouteAlternatives: false,
