@@ -47,6 +47,26 @@
         width: 390px;
         overflow: auto;
       }
+      #right-panel-2 {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+#right-panel-2 select, #right-panel-2 input {
+  font-size: 15px;
+}
+#right-panel-2 select {
+  width: 100%;
+}
+#right-panel-2 i {
+  font-size: 12px;
+}
+      #right-panel-2 {
+        height: 100%;
+        float: right;
+        width: 390px;
+        overflow: auto;
+      }
       #map {
         margin-right: 400px;
       }
@@ -65,6 +85,10 @@
           margin: 0;
         }
         #right-panel {
+          float: none;
+          width: auto;
+        }
+        #right-panel-2 {
           float: none;
           width: auto;
         }
@@ -87,6 +111,7 @@
     </div>
       
     <div id="right-panel"></div>
+    <div id="right-panel-2"></div>
     <div id="map"></div>
     
     <script>
@@ -96,6 +121,7 @@ var end; //end location
         
 function initMap() {
   var directionsDisplay = new google.maps.DirectionsRenderer;
+  var directionsDisplay2 = new google.maps.DirectionsRenderer;
   var directionsService = new google.maps.DirectionsService;
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 6,
@@ -107,6 +133,7 @@ function initMap() {
   
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('right-panel'));
+   directionsDisplay.setPanel(document.getElementById('right-panel-2'));
   
   var control = document.getElementById('floating-panel');
   control.style.display = 'block';
@@ -120,24 +147,50 @@ function initMap() {
         
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   var selectedMode = document.getElementById('mode').value;
-  directionsService.route({
-    origin: start,
-    destination: end,
-    //waypoints: [
-    //{
-      //location:"2760 24th St, San Francisco, CA 94110",
-      //stopover:true
-    //}],
-  //provideRouteAlternatives: false,
-  //optimizeWaypoints: true,
-  travelMode: google.maps.TravelMode[selectedMode]
-  }, function(response, status) {
+  if (selectedMode == "WALKING" || selectedMode == "BIKING") {
+    directionsService.route({
+      origin: start,
+      destination: end,
+      waypoints: [
+      {
+        location:"2760 24th St, San Francisco, CA 94110",
+        stopover:true
+      }],
+    provideRouteAlternatives: false,
+    optimizeWaypoints: true,
+    travelMode: google.maps.TravelMode[selectedMode]
+    }, function(response, status) {
+      if (status === google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Oh no! Directions request failed due to ' + status);
+      }
+    });
+  }
+  else {
+    directionsService.route({
+      origin: start,
+      destination: "2760 24th St, San Francisco, CA 94110",
+      travelMode: google.maps.TravelMode[selectedMode]
+    }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
     } else {
       window.alert('Oh no! Directions request failed due to ' + status);
     }
-  });
+    });
+    directionsService.route({
+      origin: "2760 24th St, San Francisco, CA 94110",
+      destination: end,
+      travelMode: google.maps.TravelMode[selectedMode]
+    }, function(response, status) {
+    if (status === google.maps.DirectionsStatus.OK) {
+      directionsDisplay2.setDirections(response);
+    } else {
+      window.alert('Oh no! Directions request failed due to ' + status);
+    }
+    });
+  }
 }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?&signed_in=true&callback=initMap"
