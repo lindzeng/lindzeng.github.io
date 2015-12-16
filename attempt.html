@@ -47,7 +47,8 @@
         width: 390px;
         overflow: auto;
       }
-      #right-panel-2 {
+      
+ #right-panel-2 {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
@@ -89,7 +90,7 @@
           width: auto;
         }
         #right-panel-2 {
-          float: none;
+          float: right;
           width: auto;
         }
       }
@@ -147,47 +148,7 @@ function initMap() {
         
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   var selectedMode = document.getElementById('mode').value;
-  if (selectedMode == "WALKING") {
-    directionsService.route({
-      origin: start,
-      destination: end,
-      waypoints: [
-      {
-        location:"2760 24th St, San Francisco, CA 94110",
-        stopover:true
-      }],
-    provideRouteAlternatives: false,
-    optimizeWaypoints: true,
-    travelMode: google.maps.TravelMode[selectedMode]
-    }, function(response, status) {
-      if (status === google.maps.DirectionsStatus.OK) {
-        directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Oh no! Directions request failed due to ' + status);
-      }
-    });
-  }
-  else if (selectedMode == "BIKING") {
-    directionsService.route({
-      origin: start,
-      destination: end,
-      waypoints: [
-      {
-        location:"2760 24th St, San Francisco, CA 94110",
-        stopover:true
-      }],
-    provideRouteAlternatives: false,
-    optimizeWaypoints: true,
-    travelMode: google.maps.TravelMode[selectedMode]
-    }, function(response, status) {
-      if (status === google.maps.DirectionsStatus.OK) {
-        directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Oh no! Directions request failed due to ' + status);
-      }
-    });
-  }
-  else {
+  if (selectedMode == "TRANSIT") {
     directionsService.route({
       origin: start,
       destination: "2760 24th St, San Francisco, CA 94110",
@@ -209,6 +170,26 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     } else {
       window.alert('Oh no! Directions request failed due to ' + status);
     }
+    });
+  }
+  else {
+    directionsService.route({
+      origin: start,
+      destination: end,
+      waypoints: [
+      {
+        location:"2760 24th St, San Francisco, CA 94110",
+        stopover:true
+      }],
+    provideRouteAlternatives: false,
+    optimizeWaypoints: true,
+    travelMode: google.maps.TravelMode[selectedMode]
+    }, function(response, status) {
+      if (status === google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Oh no! Directions request failed due to ' + status);
+      }
     });
   }
 }
