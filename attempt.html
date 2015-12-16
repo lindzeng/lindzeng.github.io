@@ -92,7 +92,7 @@
     <script>
 var start; //start location
 var end; //end location
-var waypoint; //for the donuts and coffee
+//var waypoint; //for the donuts and coffee
         
 function initMap() {
   var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -103,7 +103,7 @@ function initMap() {
   });
   start = "41717 Palm Ave., Fremont, CA 94539";
   end = "282 2nd Street 4th floor, San Francisco, CA 94105"; //ClickTime office address
-  waypoint = "2760 24th St, San Francisco, CA 94110";
+  //waypoint = "2760 24th St, San Francisco, CA 94110";
   
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('right-panel'));
@@ -123,9 +123,14 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   directionsService.route({
     origin: start,
     destination: end,
-    waypoints: waypoint,
-    optimizeWaypoints: true,
-    travelMode: google.maps.TravelMode[selectedMode]
+    waypoints: [
+    {
+      location:"2760 24th St, San Francisco, CA 94110,
+      stopover:true
+    }],
+  provideRouteAlternatives: false,
+  optimizeWaypoints: true,
+  travelMode: google.maps.TravelMode[selectedMode]
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
