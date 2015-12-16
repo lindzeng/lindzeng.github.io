@@ -10,24 +10,50 @@
         margin: 0;
         padding: 0;
       }
-      #map {
-        height: 100%;
-      }
-#floating-panel {
-  position: absolute;
-  top: 10px;
-  left: 25%;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-  text-align: center;
+     
+#left-panel {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
 }
+#left-panel select, #right-panel input {
+  font-size: 15px;
+}
+#left-panel select {
+  width: 100%;
+}
+#left-panel i {
+  font-size: 12px;
+}
+      #left-panel {
+        height: 100%;
+        float: right;
+        width: 390px;
+        overflow: auto;
+      }
         
-#right-panel {
+#center-panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+#center-panel select, #center-panel input {
+  font-size: 15px;
+}
+#center-panel select {
+  width: 100%;
+}
+#center-panel i {
+  font-size: 12px;
+}
+      #center-panel {
+        height: 100%;
+        float: right;
+        width: 390px;
+        overflow: auto;
+      }
+      
+ #right-panel {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
@@ -47,49 +73,15 @@
         width: 390px;
         overflow: auto;
       }
-      
- #right-panel-2 {
-  font-family: 'Roboto','sans-serif';
-  line-height: 30px;
-  padding-left: 10px;
-}
-#right-panel-2 select, #right-panel-2 input {
-  font-size: 15px;
-}
-#right-panel-2 select {
-  width: 100%;
-}
-#right-panel-2 i {
-  font-size: 12px;
-}
-      #right-panel-2 {
-        height: 100%;
-        float: right;
-        width: 390px;
-        overflow: auto;
-      }
-      #map {
-        margin-right: 400px;
-      }
-      #floating-panel {
-        background: #fff;
-        padding: 5px;
-        font-size: 14px;
-        font-family: Trebuchet MS;
-        border: 1px solid #ccc;
-        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-        display: none;
-      }
-      @media print {
-        #map {
-          height: 500px;
-          margin: 0;
+       #left-panel {
+          float: left;
+          width: auto;
         }
-        #right-panel {
+        #center-panel {
           float: none;
           width: auto;
         }
-        #right-panel-2 {
+        #right-panel {
           float: right;
           width: auto;
         }
@@ -97,7 +89,7 @@
     </style>
   </head>
   <body>
-    <div id="floating-panel">
+    <div id="left-panel">
       <strong>ClickTime Intern Challenge</strong>
       <br>
       <strong>Your mission:</strong> Get to the ClickTime office from your current location <br> and stop to buy coffee and donuts along the way.
@@ -111,7 +103,7 @@
     </select>
     </div>
       
-    <div id="right-panel-2"></div>
+    <div id="center-panel"></div>
     <div id="right-panel"></div>
     <div id="map"></div>
     
