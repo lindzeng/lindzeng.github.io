@@ -92,17 +92,18 @@
     <script>
 var start; //start location
 var end; //end location
-//var waypoint; //for the donuts and coffee
+var waypoint; //for the donuts and coffee
         
 function initMap() {
   var directionsDisplay = new google.maps.DirectionsRenderer;
   var directionsService = new google.maps.DirectionsService;
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 6,
-    center: {lat: 38, lng: -132}
+    center: {lat: 38, lng: -130}
   });
   start = "41717 Palm Ave., Fremont, CA 94539";
   end = "282 2nd Street 4th floor, San Francisco, CA 94105"; //ClickTime office address
+  waypoint = "2760 24th St, San Francisco, CA 94110";
   
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('right-panel'));
@@ -122,10 +123,23 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   directionsService.route({
     origin: start,
     destination: end,
+    waypoints: waypoint,
+    optimizeWaypoints: true,
     travelMode: google.maps.TravelMode[selectedMode]
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
+      var route = response.routes[0];
+      var summaryPanel = document.getElementById('right-panel');
+      summaryPanel.innerHTML = '';
+      // For each route, display summary information.
+      for (var i = 0; i < route.legs.length; i++) {
+        var routeSegment = i + 1;
+        summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+            '</b><br>';
+        summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+        summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+        summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
     } else {
       window.alert('Oh no! Directions request failed due to ' + status);
     }
