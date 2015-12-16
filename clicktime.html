@@ -98,6 +98,7 @@
     <script>
 
 var start; //start location
+var end; //end location
         
 function initMap() {
   var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -131,7 +132,7 @@ function initMap() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
-  var end = "282 2nd Street 4th floor, San Francisco, CA 94105"; //ClickTime office address
+  end = "282 2nd Street 4th floor, San Francisco, CA 94105"; //ClickTime office address
   var onChangeHandler = function() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
   };
