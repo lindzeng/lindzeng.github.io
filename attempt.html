@@ -111,8 +111,8 @@
     </select>
     </div>
       
-    <div id="right-panel"></div>
     <div id="right-panel-2"></div>
+    <div id="right-panel"></div>
     <div id="map"></div>
     
     <script>
@@ -124,6 +124,7 @@ function initMap() {
   var directionsDisplay = new google.maps.DirectionsRenderer;
   var directionsDisplay2 = new google.maps.DirectionsRenderer;
   var directionsService = new google.maps.DirectionsService;
+  var directionsService2 = new google.maps.DirectionsService;
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 6,
     center: {lat: 38, lng: -128}
@@ -160,7 +161,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
       window.alert('Oh no! Directions request failed due to ' + status);
     }
     });
-    directionsService.route({
+    directionsService2.route({
       origin: "2760 24th St, San Francisco, CA 94110",
       destination: end,
       travelMode: google.maps.TravelMode[selectedMode]
