@@ -123,13 +123,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   directionsService.route({
     origin: start,
     destination: end,
-    waypoints: [
-    {
-      location:"2760 24th St, San Francisco, CA 94110",
-      stopover:true
-    }],
-  provideRouteAlternatives: false,
-  optimizeWaypoints: true,
+    //waypoints: [
+    //{
+      //location:"2760 24th St, San Francisco, CA 94110",
+      //stopover:true
+    //}],
+  //provideRouteAlternatives: false,
+  //optimizeWaypoints: true,
   travelMode: google.maps.TravelMode[selectedMode]
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
