@@ -19,8 +19,8 @@ var map;
 var infowindow;
 
 function initMap() {
-  var pyrmont = "282 2nd Street 4th floor, San Francisco, CA 94105";
-
+  var pyrmont = {lat: 37.785636, lng: -122.397119};
+  
   map = new google.maps.Map(document.getElementById('map'), {
     center: pyrmont,
     zoom: 15
