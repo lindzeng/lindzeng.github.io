@@ -102,7 +102,7 @@
 var start; // start location
 var end; // end location
 var endLatLng; //end location in latitude-longitude
-var waypoint; // for donuts and coffee
+var waypoint; // location for donuts and coffee
         
 // Initialize the map.
 function initMap() {
@@ -144,7 +144,7 @@ function initMap() {
   geocodeAddress(geocoder);
   
   // Search for coffee and donuts near the office.
-  /*var request = {
+  var request = {
     location: endLatLng,
     radius: '500',
     query: 'coffee and donuts'
@@ -152,7 +152,7 @@ function initMap() {
 
   var service = new google.maps.places.PlacesService(map);
   service.textSearch(request, callback);
-  */
+  
   // What happens after selecting a method of travel.
   var onChangeHandler = function() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -161,7 +161,7 @@ function initMap() {
 }
 
 // Get waypoint search result.
-/*function callback(results, status) {
+function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     //var marker = new google.maps.Marker({
      // map: map,
@@ -172,7 +172,7 @@ function initMap() {
     //});
     waypoint = results[0].geometry.location;
   }
-} */
+} 
 //google.maps.event.addDomListener(window, 'load', initMap);
 
 function geocodeAddress(geocoder) {
@@ -181,7 +181,7 @@ function geocodeAddress(geocoder) {
     if (status === google.maps.GeocoderStatus.OK) {
       endLatLng = results[0].geometry.location;
     } else {
-      alert('Geocode was not successful for the following reason: ' + status);
+      alert('Darn, Geocode was not successful for the following reason: ' + status);
     }
   });
 }
