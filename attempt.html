@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Place searches</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>ClickTime Donuts and Coffee</title>
     <style>
       html, body {
         height: 100%;
@@ -13,165 +13,54 @@
       #map {
         height: 100%;
       }
-#floating-panel {
-  position: absolute;
-  top: 10px;
-  left: 25%;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-  text-align: center;
-  font-family: 'Roboto','sans-serif';
-  line-height: 30px;
-  padding-left: 10px;
-}
-        
-#right-panel {
-  font-family: 'Roboto','sans-serif';
-  line-height: 30px;
-  padding-left: 10px;
-}
-#right-panel select, #right-panel input {
-  font-size: 15px;
-}
-#right-panel select {
-  width: 100%;
-}
-#right-panel i {
-  font-size: 12px;
-}
-      #right-panel {
-        height: 100%;
-        float: right;
-        width: 390px;
-        overflow: auto;
-      }
-      #map {
-        margin-right: 400px;
-      }
-      #floating-panel {
-        background: #fff;
-        padding: 5px;
-        font-size: 14px;
-        font-family: Trebuchet MS;
-        border: 1px solid #ccc;
-        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-        display: none;
-      }
-      @media print {
-        #map {
-          height: 500px;
-          margin: 0;
-        }
-        #right-panel {
-          float: none;
-          width: auto;
-        }
-      }
     </style>
-  </head>
-  <body>
-    <div id="floating-panel">
-      <strong>ClickTime Intern Challenge</strong>
-      <br>
-      <strong>Your mission:</strong> Get to the ClickTime office from your current location <br> and stop to buy coffee and donuts along the way.
-        <br>
-        <strong>How would you like to get there?: </strong>
-    <select id="mode">
-      <option value="">Flying is not an option</option>
-      <option value="WALKING">Walking</option>
-      <option value="BICYCLING">Bicycling</option>
-      <option value="TRANSIT">Transit</option>
-    </select>
-    </div>
-      
-    <div id="right-panel"></div>
-    <div id="map"></div>
-    
-    <!-- THIS IS THE JAVASCRIPT PART -->
     <script>
-var start; // start location
-var end; // end location
-var waypoint; // for donuts and coffee
-        
-// Initialize the map.
-function initMap() {
-  var directionsDisplay = new google.maps.DirectionsRenderer;
-  var directionsService = new google.maps.DirectionsService;
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: {lat: 39, lng: -98}
-  });
-  var infoWindow = new google.maps.InfoWindow({map: map});
-  directionsDisplay.setMap(map);
-  directionsDisplay.setPanel(document.getElementById('right-panel'));
-  var control = document.getElementById('floating-panel');
-  control.style.display = 'block';
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
- 
-  start = "772 Sunshine Ct, Fremont, CA 94539";
-  end = "282 2nd Street 4th floor, San Francisco, CA 94105"; // ClickTime office address
+var map;
+var infowindow;
 
-  // Search for 
-  var request = {
-    location: end,
-    radius: '100',
-    query: 'donuts and coffee'
-  };
+function initMap() {
+  var pyrmont = {lat: -33.867, lng: 151.195};
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: pyrmont,
+    zoom: 15
+  });
+
+  infowindow = new google.maps.InfoWindow();
 
   var service = new google.maps.places.PlacesService(map);
-  service.textSearch(request, callback);
+  service.nearbySearch({
+    location: pyrmont,
+    radius: 500,
+    types: ['store']
+  }, callback);
 }
 
-// Checks that the PlacesServiceStatus is OK, and adds a marker
-// using the place ID and location from the PlacesService.
 function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    var marker = new google.maps.Marker({
-      map: map,
-      place: {
-        placeId: results[0].place_id,
-        location: results[0].geometry.location
-      }
-    });
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      createMarker(results[i]);
+    }
   }
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
-  //waypoint = "2760 24th St, San Francisco, CA 94110";
-  
-  // What happens after selecting a method of travel.
-  var onChangeHandler = function() {
-    calculateAndDisplayRoute(directionsService, directionsDisplay);
-  };
-    document.getElementById('mode').addEventListener('change', onChangeHandler);
-}
-// Calculate and display the route to get to the office.
-/*function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-  var selectedMode = document.getElementById('mode').value;
-  directionsService.route({
-    origin: start,
-    destination: end,
-    waypoints: [
-      {
-        location: waypoint,
-        stopover:true
-      }],
-    provideRouteAlternatives: false,
-    optimizeWaypoints: true,
-    travelMode: google.maps.TravelMode[selectedMode]
-  }, function(response, status) {
-    if (status === google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    } else {
-      window.alert('Oh no! Directions request failed due to ' + status);
-    }
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
   });
-} */
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?&signed_in=true&callback=initMap"
-        async defer></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&signed_in=true&libraries=places&callback=initMap" async defer></script>
   </body>
 </html>
