@@ -138,6 +138,7 @@ function initMap() {
   }
   end = "282 2nd Street 4th floor, San Francisco, CA 94105"; // ClickTime office address
   
+  // Search for coffee and donuts near the office
   var request = {
     location: end,
     radius: '1',
@@ -164,10 +165,10 @@ function callback(results, status) {
      //   location: results[0].geometry.location
     //  }
     //});
-    waypoint = results[0].place_id;
+    waypoint = results[0].geometry.location;
   }
 }
-google.maps.event.addDomListener(window, 'load', initMap);
+//google.maps.event.addDomListener(window, 'load', initMap);
 
 // Calculate and display the route to get to the office.
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
