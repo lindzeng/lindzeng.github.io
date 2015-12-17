@@ -157,13 +157,13 @@ function initMap() {
 // Get waypoint search result.
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
-    var marker = new google.maps.Marker({
-      map: map,
-      place: {
-        placeId: results[0].place_id,
-        location: results[0].geometry.location
-      }
-    });
+    //var marker = new google.maps.Marker({
+     // map: map,
+     // place: {
+     //   placeId: results[0].place_id,
+     //   location: results[0].geometry.location
+    //  }
+    //});
     waypoint = results[0].place_id;
   }
 }
