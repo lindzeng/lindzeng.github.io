@@ -19,10 +19,10 @@ var map;
 var infowindow;
 
 function initMap() {
-  var pyrmont = {lat: -33.867, lng: 151.195};
+  var end = "282 2nd Street 4th floor, San Francisco, CA 94105";
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: pyrmont,
+    center: end,
     zoom: 15
   });
 
@@ -30,9 +30,9 @@ function initMap() {
 
   var service = new google.maps.places.PlacesService(map);
   service.nearbySearch({
-    location: pyrmont,
+    location: end,
     radius: 500,
-    types: ['store']
+    types: ['food']
   }, callback);
 }
 
