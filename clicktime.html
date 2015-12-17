@@ -147,8 +147,6 @@ function initMap() {
   var service = new google.maps.places.PlacesService(map);
   service.textSearch(request, callback);
   
-  waypoint = "2760 24th St, San Francisco, CA 94110";
-  
   // What happens after selecting a method of travel.
   var onChangeHandler = function() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -166,8 +164,10 @@ function callback(results, status) {
         location: results[0].geometry.location
       }
     });
+    waypoint = results[0].place_id;
   }
 }
+google.maps.event.addDomListener(window, 'load', initialize);
 
 // Calculate and display the route to get to the office.
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
