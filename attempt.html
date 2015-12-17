@@ -19,21 +19,23 @@ var map;
 var infowindow;
 
 function initMap() {
-  var pyrmont = {lat: -33.867, lng: 151.195};
+  var end = "282 2nd Street 4th floor, San Francisco, CA 94105";
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: pyrmont,
+    center: end,
     zoom: 15
   });
 
   infowindow = new google.maps.InfoWindow();
 
+  var request = {
+    location: map.getCenter(),
+    radius: '500',
+    query: 'coffee and donuts'
+  };
+
   var service = new google.maps.places.PlacesService(map);
-  service.nearbySearch({
-    location: pyrmont,
-    radius: 500,
-    types: ['store']
-  }, callback);
+  service.textSearch(request, callback);
 }
 
 function callback(results, status) {
