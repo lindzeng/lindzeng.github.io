@@ -191,7 +191,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   var selectedMode = document.getElementById('mode').value;
   directionsService.route({
     origin: start,
-    destination: end,
+    destination: endLatLng,
     waypoints: [
       {
         location: waypoint,
