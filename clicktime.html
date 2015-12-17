@@ -152,7 +152,7 @@ function initMap() {
 
   var service = new google.maps.places.PlacesService(map);
   service.textSearch(request, callback);
-  
+
   // What happens after selecting a method of travel.
   var onChangeHandler = function() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -192,13 +192,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   directionsService.route({
     origin: start,
     destination: end,
-    waypoints: [
+    /*waypoints: [
       {
         location: waypoint,
         stopover:true
       }],
     provideRouteAlternatives: false,
-    optimizeWaypoints: true,
+    optimizeWaypoints: true,*/
     travelMode: google.maps.TravelMode[selectedMode]
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
