@@ -137,6 +137,16 @@ function initMap() {
     handleLocationError(false, infoWindow, map.getCenter());
   }
   end = "282 2nd Street 4th floor, San Francisco, CA 94105"; // ClickTime office address
+  
+  var request = {
+    location: end,
+    radius: '1',
+    query: 'coffee and donuts'
+  };
+
+  var service = new google.maps.places.PlacesService(map);
+  service.textSearch(request, callback);
+  
   waypoint = "2760 24th St, San Francisco, CA 94110";
   
   // What happens after selecting a method of travel.
@@ -144,6 +154,19 @@ function initMap() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
+}
+
+// Get waypoint search result.
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    var marker = new google.maps.Marker({
+      map: map,
+      place: {
+        placeId: results[0].place_id,
+        location: results[0].geometry.location
+      }
+    });
+  }
 }
 
 // Calculate and display the route to get to the office.
