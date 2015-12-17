@@ -20,8 +20,10 @@ var map;
 function initMap() {
   var geocoder;
   geocoder = new google.maps.Geocoder();
-  map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: pyrmont,
+    zoom: 15
+  });
   var pyrmont = {lat: 37.785636, lng: -122.397119};
 
   var service = new google.maps.places.PlacesService(map);
