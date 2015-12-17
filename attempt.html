@@ -16,7 +16,6 @@
     </style>
     <script>
 var map;
-var infowindow;
 
 function initMap() {
   var end = "282 2nd Street 4th floor, San Francisco, CA 94105";
@@ -25,8 +24,6 @@ function initMap() {
     center: end,
     zoom: 15
   });
-
-  infowindow = new google.maps.InfoWindow();
 
   var request = {
     location: map.getCenter(),
@@ -51,11 +48,6 @@ function createMarker(place) {
   var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location
-  });
-
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
   });
 }
 
