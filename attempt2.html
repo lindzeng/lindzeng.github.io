@@ -14,16 +14,12 @@
       #map {
         height: 100%;
         margin-right: 400px;
-        display: none;
       }
       #map2 {
         display: none;
       }
   #top-panel {
-    top: 10px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
     font-family: 'Trebuchet MS', 'sans-serif';
     line-height: 30px;
     background: #345;
@@ -154,7 +150,7 @@ function initMap() {
   directionsDisplay.setPanel(document.getElementById('right-panel'));
   
   var control = document.getElementById('top-panel');
-  //control.style.display = 'block';
+  control.style.display = 'default';
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 // Try Geolocation. 
    if (navigator.geolocation) {
