@@ -112,8 +112,8 @@ function initMap() {
     zoom: 4,
     center: {lat: 39, lng: -98}
   });
-  var infoWindow = new google.maps.InfoWindow({map: map});
-  directionsDisplay.setMap(map);
+  /*var infoWindow = new google.maps.InfoWindow({map: map}); 
+  directionsDisplay.setMap(map); */
   directionsDisplay.setPanel(document.getElementById('right-panel'));
 
   var control = document.getElementById('floating-panel');
@@ -127,15 +127,15 @@ function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      infoWindow.setPosition(start);
-      infoWindow.setContent('You are here!');
-      map.setCenter(start);
+      //infoWindow.setPosition(start);
+      //infoWindow.setContent('You are here!');
+      //map.setCenter(start);
     }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
+      handleLocationError(true, map.getCenter());
     });
   } else {
     // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
+    handleLocationError(false, map.getCenter());
   }
   //waypoint = "772 Sunshine Ct, Fremont, CA 94539";
   // Convert address to latitude-longitude for the search.
@@ -211,10 +211,11 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
 // Handle error if location services doesn't work.
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-                        'Error: Whoops! The Geolocation service failed.' :
-                        'Error: Uh-oh! Your browser doesn\'t support geolocation.');
+  //infoWindow.setPosition(pos);
+  //infoWindow.setContent(browserHasGeolocation ?
+                        //'Error: Whoops! The Geolocation service failed.' :
+                        //'Error: Uh-oh! Your browser doesn\'t support geolocation.');
+  window.alert('Whoops! The Geolocation service failed.');
 }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?&signed_in=true&callback=initMap"
