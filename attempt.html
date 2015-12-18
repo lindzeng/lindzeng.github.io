@@ -43,7 +43,7 @@ function initMap() {
 }
 
 function geocodeAddress(geocoder) {
-  var address = end;
+  var address = pyrmont;
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       pyrmontLatLng = results[0].geometry.location;
