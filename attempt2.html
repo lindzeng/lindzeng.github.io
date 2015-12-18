@@ -43,7 +43,6 @@
   width: 50%;
   overflow: auto;
 }
-
     </style>
   </head>
   <body>
@@ -81,7 +80,6 @@ function initMap() {
     zoom: 4,
     center: {lat: 39, lng: -98}
   });
-  //var infoWindow = new google.maps.InfoWindow({map: map});
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('panel-2'));
   
@@ -97,7 +95,7 @@ function initMap() {
   
   var control = document.getElementById('top-panel');
   control.style.display = 'block';
-    //map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+  
 // Try Geolocation. 
    if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -105,8 +103,6 @@ function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      //infoWindow.setPosition(start);
-      //infoWindow.setContent('You are here!');
       map.setCenter(start);
     }, function() {
       handleLocationError(true);
@@ -180,10 +176,6 @@ function calculateAndDisplayRoute(pointA, pointB, directionsService, directionsD
 }
 // Handle error if location services doesn't work.
 function handleLocationError(browserHasGeolocation) {
-  //infoWindow.setPosition(pos);
-  //infoWindow.setContent(browserHasGeolocation ?
-                        //'Error: Whoops! The Geolocation service failed.' :
-                        ///'Error: Uh-oh! Your browser doesn\'t support geolocation.');
   window.alert('Whoops! The Geolocation service failed.');
 }
     </script>
