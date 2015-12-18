@@ -1,73 +1,234 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Place searches</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-    </style>
-    <script>
-var map;
-
-function initMap() {
-  var geocoder;
-  geocoder = new google.maps.Geocoder();
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: pyrmont,
-    zoom: 15
-  });
-  var pyrmont = {lat: 37.785636, lng: -122.397119};
-
-  var service = new google.maps.places.PlacesService(map);
-  service.nearbySearch({
-    location: pyrmont,
-    radius: 500,
-    types: ['store']
-  }, callback);
-}
-
-function callback(results, status) {
-  if (status === google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
+  <html>
+    <head>
+      <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+      <meta charset="utf-8">
+      <title>ClickTime Donuts and Coffee</title>
+      <style>
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+  
+  #left-panel {
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
   }
-}
-
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
-
- function codeAddress() {
-    var address = "282 2nd Street 4th floor, San Francisco, CA 94105";
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
+  
+  #left-panel select, #left-panel input {
+    font-size: 15px;
+  }
+  
+  #left-panel select {
+    width: 100%;
+  }
+  
+  #left-panel i {
+    font-size: 12px;
+  }
+  
+  #left-panel {
+    height: 100%;
+    float: right;
+    width: 390px;
+    overflow: auto;
+  }
+  
+  #left-panel {
+    float: none;
+    width: auto;
+  }
+  
+  #center-panel {
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
+  
+  #center-panel select, #center-panel input {
+    font-size: 15px;
+  }
+  
+  #center-panel select {
+    width: 100%;
+  }
+  
+  #center-panel i {
+    font-size: 12px;
+  }
+  
+  #center-panel {
+    height: 100%;
+    float: right;
+    width: 390px;
+    overflow: auto;
+  }
+  
+    #center-panel {
+      float: none;
+      width: auto;
+  }
+  
+  #right-panel {
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
+  
+  #right-panel select, #right-panel input {
+    font-size: 15px;
+  }
+  
+  #right-panel select {
+    width: 100%;
+  }
+  
+  #right-panel i {
+    font-size: 12px;
+  }
+  
+  #right-panel {
+    height: 100%;
+    float: right;
+    width: 390px;
+    overflow: auto;
+  }
+  
+  #right-panel {
+    float: none;
+    width: auto;
+  }
+      </style>
+    </head>
+    <body>
+      <div id="left-panel">
+        <strong>ClickTime Intern Challenge</strong>
+        <br>
+        <strong>Your mission:</strong> Get to the ClickTime office from your current location <br> and stop to buy coffee and donuts along the way.
+          <br>
+          <strong>How would you like to get there?: </strong>
+      <select id="mode">
+        <option value="">Flying is not an option</option>
+        <option value="WALKING">Walking</option>
+        <option value="BICYCLING">Bicycling</option>
+        <option value="TRANSIT">Transit</option>
+      </select>
+      </div>
+        
+      <div id="center-panel"></div>
+      <div id="right-panel"></div>
+      
+      <!-- THIS IS THE JAVASCRIPT PART -->
+      <script>
+  var start; // start location
+  var end; // end location
+  var endLatLng; //end location in latitude-longitude
+  var waypoint; // location for donuts and coffee
+          
+  // Initialize.
+  function initDir() {
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var directionsService = new google.maps.DirectionsService();
+    directionsDisplay.setPanel(document.getElementById('center-panel'));
+  
+    var control = document.getElementById('left-panel');
+    control.style.display = 'block';
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+  
+  // Try Geolocation. 
+     if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+          start = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+      }, function() {
+        handleLocationError(true);
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false);
+    }
+    //waypoint = "772 Sunshine Ct, Fremont, CA 94539";
+    // Convert address to latitude-longitude for the search.
+    end = "282 2nd Street 4th floor, San Francisco, CA 94105"; // ClickTime office address
+    var geocoder = new google.maps.Geocoder();
+    geocodeAddress(geocoder);
+    
+    // Search for coffee and donuts near the office.
+    var request = {
+      location: endLatLng,
+      radius: '500',
+      query: 'coffee and donuts'
+    };
+    var service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback);
+  
+    // What happens after selecting a method of travel.
+    var onChangeHandler = function() {
+      calculateAndDisplayRoute(directionsService, directions);
+    };
+      document.getElementById('mode').addEventListener('change', onChangeHandler);
+  }
+  
+  // Get waypoint search result.
+  function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      //var marker = new google.maps.Marker({
+       // map: map,
+       // place: {
+       //   placeId: results[0].place_id,
+       //   location: results[0].geometry.location
+      //  }
+      //});
+      waypoint = results[0].geometry.location;
+    }
+      waypoint = "772 Sunshine Ct., Fremont, CA 94539";
+  } 
+  //google.maps.event.addDomListener(window, 'load', initMap);
+  
+  function geocodeAddress(geocoder) {
+    var address = end;
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        endLatLng = results[0].geometry.location;
       } else {
-        alert("Geocode was not successful for the following reason: " + status);
+        alert('Darn, Geocode was not successful for the following reason: ' + status);
       }
     });
   }
-
-    </script>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?&signed_in=true&libraries=places&callback=initMap" async defer></script>
-  </body>
-</html>
+  
+  // Calculate and display the route to get to the office.
+  function calculateAndDisplayRoute(directionsService) {
+    var selectedMode = document.getElementById('mode').value;
+    directionsService.route({
+      origin: start,
+      destination: end,
+      waypoints: [
+        {
+          location: waypoint,
+          stopover:true
+        }],
+      provideRouteAlternatives: false,
+      optimizeWaypoints: true,
+      travelMode: google.maps.TravelMode[selectedMode]
+    }, function(response, status) {
+      if (status === google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Oh no! Directions request failed due to ' + status);
+      }
+    });
+  }
+  
+  // Handle error if location services doesn't work.
+  function handleLocationError(browserHasGeolocation) {
+    window.alert('Whoops! The Geolocation service failed.');
+  }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?&signed_in=true&callback=initDir"
+          async defer></script>
+    </body>
+  </html>
