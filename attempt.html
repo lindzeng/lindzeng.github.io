@@ -16,8 +16,7 @@
         margin-right: 400px;
       }
       #map2 {
-        height: 50%;
-        margin-right: 400px;
+        display: none;
       }
   
 #floating-panel {
@@ -100,6 +99,7 @@
     
     
       <div id="map"></div>
+      <div id="map2"></div>
     
     <!-- THIS IS THE JAVASCRIPT PART -->
     <script>
@@ -120,7 +120,7 @@ function initMap() {
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('left-panel'));
   
-  /*
+  
   var directionsDisplay2 = new google.maps.DirectionsRenderer;
   var directionsService2 = new google.maps.DirectionsService;
   var map2 = new google.maps.Map(document.getElementById('map2'), {
@@ -129,7 +129,6 @@ function initMap() {
   });
   directionsDisplay.setMap(map2);
   directionsDisplay.setPanel(document.getElementById('right-panel'));
-  */
   
   var control = document.getElementById('floating-panel');
   control.style.display = 'block';
@@ -172,7 +171,7 @@ function initMap() {
   
   var onChangeHandler = function() {
     calculateAndDisplayRoute(start, food, directionsService, directionsDisplay);
-    //calculateAndDispalyRoute(food, end, directionsService2, directionsDisplay2);
+    calculateAndDispalyRoute(food, end, directionsService2, directionsDisplay2);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
 }
