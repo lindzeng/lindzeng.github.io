@@ -124,15 +124,17 @@ function initMap() {
     type: ['food']
   };
   var service = new google.maps.places.PlacesService(map);
-  service.textSearch(request, callback);
+  //service.textSearch(request, callback);
   
   // What happens after selecting a method of travel.
   var onChangeHandler = function() {
+    service.textSearch(request, callback);
     calculateAndDisplayRoute(start, food, directionsService, directionsDisplay);
     calculateAndDisplayRoute(food, end, directionsService2, directionsDisplay2);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
-  
+}
+
 // Get waypoint search result.
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -140,8 +142,7 @@ function callback(results, status) {
   }
 }
 
-google.maps.event.addDomListener(window, 'load', initMap);
-}
+//google.maps.event.addDomListener(window, 'load', initMap);
 
 function geocodeAddress(geocoder) {
   var address = end;
