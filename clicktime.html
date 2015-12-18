@@ -68,7 +68,8 @@
     
     <!-- THIS IS THE JAVASCRIPT PART -->
     <script>
-
+var start; //start location
+var end; //end address
 var endLatLng; //end location in latitude-longitude
 var food; // location for donuts and coffee
         
@@ -98,7 +99,7 @@ function initMap() {
 // Try Geolocation. 
    if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-        var start = {
+        start = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
@@ -112,7 +113,7 @@ function initMap() {
   }
  
   // Convert address to latitude-longitude for the search.
-  var end = "282 2nd Street 4th floor, San Francisco, CA 94105"; // ClickTime office address
+  end = "282 2nd Street 4th floor, San Francisco, CA 94105"; // ClickTime office address
   var geocoder = new google.maps.Geocoder();
   geocodeAddress(geocoder, end);
   
