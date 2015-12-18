@@ -130,8 +130,8 @@ function initMap() {
   // What happens after selecting a method of travel.
   
   var onChangeHandler = function() {
-    //calculateAndDisplayRoute(start, food, directionsService, directionsDisplay);
-    calculateAndDispalyRoute(food, end, directionsService2, directionsDisplay2);
+    calculateAndDisplayRoute(start, food, directionsService, directionsDisplay);
+    //calculateAndDispalyRoute(food, end, directionsService2, directionsDisplay2);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
 }
@@ -160,7 +160,7 @@ function geocodeAddress(geocoder) {
   });
 }
 // Calculate and display the route to get to the office.
-function calculateAndDisplayRoute(pointA, pointB, directionsService, directionsDisplay) {
+function calculateAndDisplayRoute(pointA, pointB, service, display) {
   var selectedMode = document.getElementById('mode').value;
   directionsService.route({
     origin: pointA,
