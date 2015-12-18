@@ -149,7 +149,7 @@ function initMap() {
   //service.textSearch(request, callback);
   // What happens after selecting a method of travel.
   var onChangeHandler = function() {
-    calculateAndDisplayRoute(directionsService, directionsDisplay);
+    calculateAndDisplayRoute(start, food, directionsService, directionsDisplay);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
 }
@@ -179,11 +179,11 @@ function geocodeAddress(geocoder) {
   });
 }
 // Calculate and display the route to get to the office.
-function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+function calculateAndDisplayRoute(pointA, pointB, directionsService, directionsDisplay) {
   var selectedMode = document.getElementById('mode').value;
   directionsService.route({
-    origin: start,
-    destination: food,
+    origin: pointA,
+    destination: pointB,
     travelMode: google.maps.TravelMode[selectedMode]
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
