@@ -202,7 +202,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     travelMode: google.maps.TravelMode[selectedMode]
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
+      //directionsDisplay.setDirections(response); //do nothing
     } else {
       window.alert('Oh no! Directions request failed due to ' + status);
     }
