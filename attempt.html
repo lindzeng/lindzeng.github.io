@@ -10,6 +10,12 @@
         margin: 0;
         padding: 0;
       }
+      
+      #map-column {
+        float: left;
+        display: block;
+      }
+      
       #map {
         height: 50%;
         margin-right: 400px;
@@ -98,7 +104,11 @@
     
     <div id="right-panel"></div>
     <div id="left-panel"></div>
-    <div id="map"></div>
+    
+    <div id="map-column">
+      <div id="map"></div>
+      <div id="map2"></div>
+    </div>
     
     <!-- THIS IS THE JAVASCRIPT PART -->
     <script>
