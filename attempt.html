@@ -10,9 +10,9 @@
         margin: 0;
         padding: 0;
       }
-      #map {
+      /*#map {
         height: 100%;
-      }
+      }*/
 #floating-panel {
   position: absolute;
   top: 10px;
@@ -106,7 +106,7 @@
   <body>
       
     <div id="right-panel"></div>
-    <div id="map"></div>
+    <div id="map" style="float:left;width:0%; height:0%"></div>
     <div id="left-panel">
       <strong>ClickTime Intern Challenge</strong>
       <br>
@@ -227,7 +227,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
       directionsDisplay.setPanel(document.getElementById('right-panel'));
-      //directionsDisplay.setDirections(response); 
+      directionsDisplay.setDirections(response); 
     } else {
       window.alert('Oh no! Directions request failed due to ' + status);
     }
