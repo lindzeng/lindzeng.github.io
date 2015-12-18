@@ -118,15 +118,13 @@ function initMap() {
   geocodeAddress(geocoder);
   
   // Search for coffee and donuts near the office.
-  var request = {
+  var service = new google.maps.places.PlacesService(map);
+  service.textSearch({
     location: endLatLng,
     radius: 500,
     query: 'coffee and donuts',
-    type: ['food']
-  };
-  var service = new google.maps.places.PlacesService(map);
-  //service.textSearch(request, callback);
-  food = "41717 Palm Ave., Fremont, CA 94539";
+    types: ['food']
+  }, callback);
   
   // What happens after selecting a method of travel.
   var onChangeHandler = function() {
@@ -135,6 +133,7 @@ function initMap() {
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
 }
+
 // Get food search result.
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
