@@ -10,7 +10,7 @@
         margin: 0;
         padding: 0;
       }
-      #map {
+      #map1, #map2 {
         height: 50%;
         margin-right: 400px;
       }
@@ -93,7 +93,8 @@
     
     <div id="right-panel"></div>
     <div id="left-panel"></div>
-    <div id="map"></div>
+    <div id="map1"></div>
+    <div id="map2"></div>
     
     <!-- THIS IS THE JAVASCRIPT PART -->
     <script>
@@ -106,7 +107,7 @@ var food; // location for donuts and coffee
 function initMap() {
   var directionsDisplay = new google.maps.DirectionsRenderer;
   var directionsService = new google.maps.DirectionsService;
-  var map = new google.maps.Map(document.getElementById('map'), {
+  var map1 = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
     center: {lat: 39, lng: -98}
   });
@@ -165,7 +166,6 @@ function initMap() {
     //});
     //waypoint = results[0].geometry.location;
   //}
-    waypoint = "772 Sunshine Ct., Fremont, CA 94539";
 //} 
 //google.maps.event.addDomListener(window, 'load', initMap);
 function geocodeAddress(geocoder) {
