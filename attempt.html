@@ -129,8 +129,8 @@
           
   // Initialize.
   function initDir() {
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var directionsService = new google.maps.DirectionsService;
     directionsDisplay.setPanel(document.getElementById('center-panel'));
   
     var control = document.getElementById('left-panel');
@@ -168,7 +168,7 @@
   
     // What happens after selecting a method of travel.
     var onChangeHandler = function() {
-      calculateAndDisplayRoute(directionsService, directions);
+      calculateAndDisplayRoute(directionsService, directionsDisplay);
     };
       document.getElementById('mode').addEventListener('change', onChangeHandler);
   }
@@ -201,18 +201,12 @@
   }
   
   // Calculate and display the route to get to the office.
-  function calculateAndDisplayRoute(directionsService) {
+  function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var selectedMode = document.getElementById('mode').value;
     directionsService.route({
       origin: start,
       destination: end,
-      waypoints: [
-        {
-          location: waypoint,
-          stopover:true
-        }],
       provideRouteAlternatives: false,
-      optimizeWaypoints: true,
       travelMode: google.maps.TravelMode[selectedMode]
     }, function(response, status) {
       if (status === google.maps.DirectionsStatus.OK) {
@@ -230,5 +224,7 @@
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?&signed_in=true&callback=initDir"
           async defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?&signed_in=true&libraries=places&callback=initDir" 
+          async defer></script>    
     </body>
   </html>
