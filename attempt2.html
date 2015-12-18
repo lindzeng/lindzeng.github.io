@@ -81,7 +81,7 @@ function initMap() {
     center: {lat: 39, lng: -98}
   });
   directionsDisplay.setMap(map);
-  directionsDisplay.setPanel(document.getElementById('panel-2'));
+  directionsDisplay.setPanel(document.getElementById('panel-1'));
   
   var directionsDisplay2 = new google.maps.DirectionsRenderer;
   var directionsService2 = new google.maps.DirectionsService;
@@ -90,7 +90,7 @@ function initMap() {
     center: {lat: 38, lng: -122}
   });
   directionsDisplay2.setMap(map2);
-  directionsDisplay2.setPanel(document.getElementById('panel-1'));
+  directionsDisplay2.setPanel(document.getElementById('panel-2'));
   
   var control = document.getElementById('top-panel');
   control.style.display = 'block';
@@ -130,7 +130,7 @@ function initMap() {
   
   var onChangeHandler = function() {
     calculateAndDisplayRoute(start, food, directionsService, directionsDisplay);
-    calculateAndDispalyRoute(food, end, directionsService2, directionsDisplay2);
+    calculateAndDisplayRoute(food, end, directionsService2, directionsDisplay2);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
 }
