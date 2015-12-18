@@ -138,13 +138,13 @@ function initMap() {
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
-      if (results[i].rating >= 4.0) {
+      if (results[i].rating >= 4.0) { // Gotta get quality donuts and coffee!
         food = results[i].geometry.location;
         return;
         }
       }
     } else { // If there are no results within the radius of the search.
-    food = "2760 24th St, San Francisco, CA 94110"; // go to Dynamo Donuts & Coffee (a little far, but great reviews!)
+      food = results[0].geometry.location; // Go to the first result in list
   }
 }
 
