@@ -150,7 +150,7 @@ function initMap() {
     query: 'coffee and donuts'
   };
   var service = new google.maps.places.PlacesService(map);
-  service.textSearch(request, callback);
+  //service.textSearch(request, callback);
 
   // What happens after selecting a method of travel.
   var onChangeHandler = function() {
@@ -160,8 +160,8 @@ function initMap() {
 }
 
 // Get waypoint search result.
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
+//function callback(results, status) {
+  //if (status == google.maps.places.PlacesServiceStatus.OK) {
     //var marker = new google.maps.Marker({
      // map: map,
      // place: {
@@ -169,7 +169,7 @@ function callback(results, status) {
      //   location: results[0].geometry.location
     //  }
     //});
-    waypoint = results[0].geometry.location;
+    //waypoint = results[0].geometry.location;
   }
     waypoint = "772 Sunshine Ct., Fremont, CA 94539";
 } 
