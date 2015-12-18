@@ -131,7 +131,7 @@ function initMap() {
   
   var onChangeHandler = function() {
     calculateAndDisplayRoute(start, food, directionsService, directionsDisplay);
-    //calculateAndDispalyRoute(food, end, directionsService2, directionsDisplay2);
+    calculateAndDispalyRoute(food, end, directionsService2, directionsDisplay2);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
 }
