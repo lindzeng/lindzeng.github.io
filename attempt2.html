@@ -17,7 +17,7 @@
       #map2 {
         display: none;
       }
-  #top-panel {
+   p {
     text-align: center;
     font-family: 'Trebuchet MS', 'sans-serif';
     line-height: 30px;
@@ -76,9 +76,10 @@
       <option value="BICYCLING">Bicycling</option>
       <option value="TRANSIT">Transit</option>
     </select> </p>
-    
-    <div id="right-panel"></div>
-    <div id="left-panel"></div>
+    <p>Directions from your current location to the donut and coffee shop:</p>
+    <div id="panel-1"></div>
+    <p>Directions from the donut and coffee shop to ClickTime's office:</p>
+    <div id="panel-2"></div>
     
       <div id="map"></div>
       <div id="map2"></div>
@@ -100,7 +101,7 @@ function initMap() {
   });
   var infoWindow = new google.maps.InfoWindow({map: map});
   directionsDisplay.setMap(map);
-  directionsDisplay.setPanel(document.getElementById('left-panel'));
+  directionsDisplay.setPanel(document.getElementById('panel-1'));
   
   
   var directionsDisplay2 = new google.maps.DirectionsRenderer;
@@ -110,7 +111,7 @@ function initMap() {
     center: {lat: 38, lng: -122}
   });
   directionsDisplay.setMap(map2);
-  directionsDisplay.setPanel(document.getElementById('right-panel'));
+  directionsDisplay.setPanel(document.getElementById('panel-2'));
   
   var control = document.getElementById('top-panel');
   control.style.display = 'block';
