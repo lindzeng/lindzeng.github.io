@@ -162,13 +162,13 @@ function geocodeAddress(geocoder) {
 // Calculate and display the route to get to the office.
 function calculateAndDisplayRoute(pointA, pointB, service, display) {
   var selectedMode = document.getElementById('mode').value;
-  directionsService.route({
+  service.route({
     origin: pointA,
     destination: pointB,
     travelMode: google.maps.TravelMode[selectedMode]
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
+      display.setDirections(response);
     } else {
       window.alert('Oh no! Directions request failed due to ' + status);
     }
