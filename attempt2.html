@@ -31,37 +31,19 @@
   line-height: 30px;
   padding-left: 10px;
   height: 100%;
-  float: left;
   width: 50%;
   overflow: auto;
 }
-/*#left-panel select, #left-panel input {
-  font-size: 15px;
-}
-#left-panel select {
-  width: 100%;
-}
-#left-panel i {
-  font-size: 12px;
-}*/
+
 #right-panel {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
   height: 100%;
-  float: right;
-  width: 50%px;
+  width: 50%;
   overflow: auto;
 }
-/*#right-panel select, #right-panel input {
-  font-size: 15px;
-}
-#right-panel select {
-  width: 100%;
-}
-#right-panel i {
-  font-size: 12px;
-}*/
+
     </style>
   </head>
   <body>
@@ -101,7 +83,7 @@ function initMap() {
   });
   var infoWindow = new google.maps.InfoWindow({map: map});
   directionsDisplay.setMap(map);
-  directionsDisplay.setPanel(document.getElementById('panel-1'));
+  directionsDisplay.setPanel(document.getElementById('panel-2'));
   
   
   var directionsDisplay2 = new google.maps.DirectionsRenderer;
@@ -111,7 +93,7 @@ function initMap() {
     center: {lat: 38, lng: -122}
   });
   directionsDisplay.setMap(map2);
-  directionsDisplay.setPanel(document.getElementById('panel-2'));
+  directionsDisplay.setPanel(document.getElementById('panel-1'));
   
   var control = document.getElementById('top-panel');
   control.style.display = 'block';
