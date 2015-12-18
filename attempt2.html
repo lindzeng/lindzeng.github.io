@@ -81,7 +81,7 @@ function initMap() {
     zoom: 4,
     center: {lat: 39, lng: -98}
   });
-  var infoWindow = new google.maps.InfoWindow({map: map});
+  //var infoWindow = new google.maps.InfoWindow({map: map});
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('panel-2'));
   
@@ -105,15 +105,15 @@ function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      infoWindow.setPosition(start);
-      infoWindow.setContent('You are here!');
+      //infoWindow.setPosition(start);
+      //infoWindow.setContent('You are here!');
       map.setCenter(start);
     }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
+      handleLocationError(true);
     });
   } else {
     // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
+    handleLocationError(false);
   }
   
   food = "41717 Palm Ave, Fremont, CA 94539";
@@ -135,7 +135,7 @@ function initMap() {
   
   var onChangeHandler = function() {
     calculateAndDisplayRoute(start, food, directionsService, directionsDisplay);
-    //calculateAndDispalyRoute(food, end, directionsService2, directionsDisplay2);
+    calculateAndDispalyRoute(food, end, directionsService2, directionsDisplay2);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
 }
@@ -159,7 +159,7 @@ function geocodeAddress(geocoder) {
     if (status === google.maps.GeocoderStatus.OK) {
       endLatLng = results[0].geometry.location;
     } else {
-      alert('Darn, Geocode was not successful for the following reason: ' + status);
+      window.alert('Darn, Geocode was not successful for the following reason: ' + status);
     }
   });
 }
@@ -179,11 +179,12 @@ function calculateAndDisplayRoute(pointA, pointB, directionsService, directionsD
   });
 }
 // Handle error if location services doesn't work.
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-                        'Error: Whoops! The Geolocation service failed.' :
-                        'Error: Uh-oh! Your browser doesn\'t support geolocation.');
+function handleLocationError(browserHasGeolocation) {
+  //infoWindow.setPosition(pos);
+  //infoWindow.setContent(browserHasGeolocation ?
+                        //'Error: Whoops! The Geolocation service failed.' :
+                        ///'Error: Uh-oh! Your browser doesn\'t support geolocation.');
+  window.alert('Whoops! The Geolocation service failed.');
 }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?&signed_in=true&callback=initMap"
