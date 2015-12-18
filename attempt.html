@@ -11,7 +11,12 @@
         padding: 0;
       }
       #map {
-        height: 100%;
+        height: 50%;
+        margin-right: 400px;
+        margin-bottom: 400px;
+      }
+      #map2 {
+        height: 50%;
         margin-right: 400px;
       }
   
@@ -113,9 +118,20 @@ function initMap() {
   var infoWindow = new google.maps.InfoWindow({map: map});
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('left-panel'));
+  
+  var directionsDisplay2 = new google.maps.DirectionsRenderer;
+  var directionsService2 = new google.maps.DirectionsService;
+  var map2 = new google.maps.Map(document.getElementById('map2'), {
+    zoom: 15,
+    center: {lat: 38, lng: -122}
+  });
+  directionsDisplay.setMap(map2);
+  directionsDisplay.setPanel(document.getElementById('right-panel'));
+  
   var control = document.getElementById('floating-panel');
   control.style.display = 'block';
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+
 // Try Geolocation. 
    if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -133,7 +149,9 @@ function initMap() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
+  
   food = "41717 Palm Ave, Fremont, CA 94539";
+ 
   // Convert address to latitude-longitude for the search.
   end = "282 2nd Street 4th floor, San Francisco, CA 94105"; // ClickTime office address
   var geocoder = new google.maps.Geocoder();
@@ -148,8 +166,10 @@ function initMap() {
  // var service = new google.maps.places.PlacesService(map);
   //service.textSearch(request, callback);
   // What happens after selecting a method of travel.
+  
   var onChangeHandler = function() {
     calculateAndDisplayRoute(start, food, directionsService, directionsDisplay);
+    calculateAndDispalyRoute(food, end, directionsService2, directionsDisplay2);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
 }
