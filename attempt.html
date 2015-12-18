@@ -36,7 +36,7 @@ function initMap() {
 
   var service = new google.maps.places.PlacesService(map);
   service.textSearch({
-    location: {lat: 37.7833, lng: -122.4167},
+    location: pyrmontLatLng,
     radius: 1000,
     query: 'coffee and donuts',
     types: ['food']
