@@ -130,7 +130,7 @@ function initMap() {
   // What happens after selecting a method of travel.
   
   var onChangeHandler = function() {
-    calculateAndDisplayRoute(start, food, directionsService, directionsDisplay);
+    //calculateAndDisplayRoute(start, food, directionsService, directionsDisplay);
     calculateAndDispalyRoute(food, end, directionsService2, directionsDisplay2);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
