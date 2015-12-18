@@ -100,7 +100,7 @@
 var start; // start location
 var end; // end location
 var endLatLng; //end location in latitude-longitude
-var waypoint; // location for donuts and coffee
+var food; // location for donuts and coffee
         
 // Initialize the map.
 function initMap() {
@@ -133,7 +133,7 @@ function initMap() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
-  //waypoint = "772 Sunshine Ct, Fremont, CA 94539";
+  food = "41717 Palm Ave, Fremont, CA 94539";
   // Convert address to latitude-longitude for the search.
   end = "282 2nd Street 4th floor, San Francisco, CA 94105"; // ClickTime office address
   var geocoder = new google.maps.Geocoder();
@@ -183,14 +183,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   var selectedMode = document.getElementById('mode').value;
   directionsService.route({
     origin: start,
-    destination: end,
-    //waypoints: [
-      //{
-        //location: waypoint,
-        //stopover:true
-      //}],
-    //provideRouteAlternatives: false,
-    //optimizeWaypoints: true,
+    destination: food,
     travelMode: google.maps.TravelMode[selectedMode]
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
