@@ -83,15 +83,14 @@ function initMap() {
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('panel-2'));
   
-  
   var directionsDisplay2 = new google.maps.DirectionsRenderer;
   var directionsService2 = new google.maps.DirectionsService;
   var map2 = new google.maps.Map(document.getElementById('map2'), {
     zoom: 15,
     center: {lat: 38, lng: -122}
   });
-  directionsDisplay.setMap(map2);
-  directionsDisplay.setPanel(document.getElementById('panel-1'));
+  directionsDisplay2.setMap(map2);
+  directionsDisplay2.setPanel(document.getElementById('panel-1'));
   
   var control = document.getElementById('top-panel');
   control.style.display = 'block';
