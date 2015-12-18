@@ -170,9 +170,9 @@ function initMap() {
     //  }
     //});
     //waypoint = results[0].geometry.location;
-  }
+  //}
     waypoint = "772 Sunshine Ct., Fremont, CA 94539";
-} 
+//} 
 //google.maps.event.addDomListener(window, 'load', initMap);
 
 function geocodeAddress(geocoder) {
@@ -192,13 +192,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   directionsService.route({
     origin: start,
     destination: end,
-    waypoints: [
-      {
-        location: waypoint,
-        stopover:true
-      }],
-    provideRouteAlternatives: false,
-    optimizeWaypoints: true,
+    //waypoints: [
+      //{
+        //location: waypoint,
+        //stopover:true
+      //}],
+    //provideRouteAlternatives: false,
+    //optimizeWaypoints: true,
     travelMode: google.maps.TravelMode[selectedMode]
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
