@@ -42,12 +42,14 @@ header {
   float: left;
   padding: 5px 15px;
   margin: 0px 5px 5px 5px;
+  overflow: auto;
 }
 
 #right {
   width: 270px;
   padding: 5px 15px;
   float: left;
+  overflow: auto;
 }
 
 footer {
@@ -60,108 +62,6 @@ footer {
   display: none;
 }
 
-
-/************************************************************************************
-MEDIA QUERIES
-*************************************************************************************/
-
-
-/* for 980px or less */
-
-@media screen and (max-width: 980px) {
-  #pagewrap {
-    width: 94%;
-  }
-  #instructions {
-    width: 41%;
-    padding: 1% 4%;
-  }
-  #left {
-    width: 41%;
-    padding: 1% 4%;
-    margin: 0px 0px 5px 5px;
-    float: right;
-  }
-  #right {
-    clear: both;
-    padding: 1% 4%;
-    width: auto;
-    float: none;
-  }
-  header,
-  footer {
-    padding: 1% 4%;
-  }
-  #map,
-  #map2 {
-    display: none;
-  }
-}
-
-/* for 700px or less */
-
-@media screen and (max-width: 600px) {
-  #instructions {
-    width: auto;
-    float: none;
-  }
-  #left {
-    width: auto;
-    float: none;
-    margin-left: 0px;
-  }
-  #right {
-    width: auto;
-    float: none;
-  }
-  #map,
-  #map2 {
-    display: none;
-  }
-}
-
-
-/* for 480px or less */
-
-@media screen and (max-width: 480px) {
-  header {
-    height: auto;
-  }
-  h1 {
-    font-size: 2em;
-  }
-  #right {
-    display: none;
-  }
-  #map,
-  #map2 {
-    display: none;
-  }
-}
-
-#instructions {
-  background: #f8f8f8;
-}
-
-#right {
-  background: #f0efef;
-}
-
-header,
-#instructions,
-#left,
-#right {
-  margin-bottom: 5px;
-}
-
-#pagewrap,
-header,
-#instructions,
-#left,
-#right,
-footer {
-  border: solid 1px #ccc;
-}
 </style>
 </head>
 
