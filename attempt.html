@@ -17,9 +17,11 @@
     <script>
 var map;
 var infowindow;
+var pyrmont;
+var pyrmontLatLng;
 
 function initMap() {
-  var pyrmont = "282 2nd Street 4th floor, San Francisco, CA 94105";
+  pyrmont = "282 2nd Street 4th floor, San Francisco, CA 94105";
   
   var geocoder = new google.maps.Geocoder();
   geocodeAddress(geocoder);
@@ -44,7 +46,7 @@ function geocodeAddress(geocoder) {
   var address = end;
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
-      endLatLng = results[0].geometry.location;
+      pyrmontLatLng = results[0].geometry.location;
     } else {
       window.alert('Darn, Geocode was not successful for the following reason: ' + status);
     }
