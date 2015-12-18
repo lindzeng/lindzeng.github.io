@@ -120,7 +120,7 @@ function initMap() {
   // Search for coffee and donuts near the office.
   var service = new google.maps.places.PlacesService(map);
   service.textSearch({
-    location: endLatLng,
+    location: {lat: 37.7833, lng: -122.4167},
     radius: 500,
     query: 'coffee and donuts',
     types: ['food']
