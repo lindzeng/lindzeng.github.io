@@ -136,7 +136,7 @@ function initMap() {
 
 // Get food search result.
 function callback(results, status) {
-  if (status === google.maps.places.PlacesServiceStatus.OK) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
     food = results[0].geometry.location;
   }
   food = "41717 Palm Ave., Fremont, CA 94539";
