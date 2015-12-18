@@ -125,7 +125,8 @@ function initMap() {
     type: ['food']
   };
   var service = new google.maps.places.PlacesService(map);
-  service.textSearch(request, callback);
+  //service.textSearch(request, callback);
+  food = "41717 Palm Ave., Fremont, CA 94539";
   
   // What happens after selecting a method of travel.
   var onChangeHandler = function() {
@@ -171,9 +172,9 @@ function handleLocationError(browserHasGeolocation) {
   window.alert('Whoops! The Geolocation service failed.');
 }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?&signed_in=true&callback=initMap"
-        async defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?&libraries=places&signed_in=true&callback=initMap"
         async defer></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?&libraries=places&signed_in=true&callback=initMap"
+        async defer></script>-->
   </body>
 </html>
