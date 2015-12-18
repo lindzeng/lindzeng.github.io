@@ -84,7 +84,7 @@
     </style>
   </head>
   <body>
-    <div id="left-panel">
+    <div id="floating-panel">
       <strong>ClickTime Intern Challenge</strong>
       <br>
       <strong>Your mission:</strong> Get to the ClickTime office from your current location <br> and stop to buy coffee and donuts along the way.
@@ -98,6 +98,7 @@
     </select>
     </div>
     
+    <div id="left-panel"></div>
     <div id="right-panel"></div>
     <div id="map"></div>
     
@@ -120,7 +121,7 @@ function initMap() {
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('left-panel'));
 
-  var control = document.getElementById('left-panel');
+  var control = document.getElementById('floating-panel');
   control.style.display = 'block';
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 
