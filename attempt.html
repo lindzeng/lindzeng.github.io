@@ -31,7 +31,7 @@ function initMap() {
   var service = new google.maps.places.PlacesService(map);
   service.textSearch({
     location: pyrmont,
-    radius: 500,
+    radius: 1000,
     query: 'coffee and donuts',
     types: ['food']
   }, callback);
