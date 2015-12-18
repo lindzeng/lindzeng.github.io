@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>ClickTime Donuts and Coffee</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #000;
+}
+
+/* STRUCTURE */
+
+#pagewrap {
+  padding: 5px;
+  width: 960px;
+  margin: 20px auto;
+}
+
+header {
+  height: 100px;
+  padding: 0 15px;
+}
+
+#instructions {
+  width: 290px;
+  float: left;
+  padding: 5px 15px;
+}
+
+#left {
+  width: 294px;
+  /* Account for margins + border values */
+  float: left;
+  padding: 5px 15px;
+  margin: 0px 5px 5px 5px;
+}
+
+#right {
+  width: 270px;
+  padding: 5px 15px;
+  float: left;
+}
+
+footer {
+  clear: both;
+  padding: 0 15px;
+}
+
+#map,
+#map2 {
+  display: none;
+}
+
+
+/************************************************************************************
+MEDIA QUERIES
+*************************************************************************************/
+
+
+/* for 980px or less */
+
+@media screen and (max-width: 980px) {
+  #pagewrap {
+    width: 94%;
+  }
+  #instructions {
+    width: 41%;
+    padding: 1% 4%;
+  }
+  #left {
+    width: 41%;
+    padding: 1% 4%;
+    margin: 0px 0px 5px 5px;
+    float: right;
+  }
+  #right {
+    clear: both;
+    padding: 1% 4%;
+    width: auto;
+    float: none;
+  }
+  header,
+  footer {
+    padding: 1% 4%;
+  }
+  #map,
+  #map2 {
+    display: none;
+  }
+}
+
+/* for 700px or less */
+
+@media screen and (max-width: 600px) {
+  #instructions {
+    width: auto;
+    float: none;
+  }
+  #left {
+    width: auto;
+    float: none;
+    margin-left: 0px;
+  }
+  #right {
+    width: auto;
+    float: none;
+  }
+  #map,
+  #map2 {
+    display: none;
+  }
+}
+
+
+/* for 480px or less */
+
+@media screen and (max-width: 480px) {
+  header {
+    height: auto;
+  }
+  h1 {
+    font-size: 2em;
+  }
+  #right {
+    display: none;
+  }
+  #map,
+  #map2 {
+    display: none;
+  }
+}
+
+#instructions {
+  background: #f8f8f8;
+}
+
+#right {
+  background: #f0efef;
+}
+
+header,
+#instructions,
+#left,
+#right {
+  margin-bottom: 5px;
+}
+
+#pagewrap,
+header,
+#instructions,
+#left,
+#right,
+footer {
+  border: solid 1px #ccc;
+}
+</style>
+</head>
+
+<body>
+  <div id="pagewrap">
+
+    <header>
+      <h1>ClickTime Intern Challenge</h1>
+    </header>
+
+    <section id="instructions">
+      <h2>Your Mission</h2>
+      <p>Get to the ClickTime office from your current location and stop to buy coffee and donuts along the way.</p>
+      <br>
+      <strong>How would you like to get there?: </strong>
+      <select id="mode">
+        <option value="">Flying is not an option</option>
+        <option value="WALKING">Walking</option>
+        <option value="BICYCLING">Bicycling</option>
+        <option value="TRANSIT">Transit</option>
+      </select>
+    </section>
+
+    <section id="left">
+    </section>
+
+    <section id="right">
+    </section>
+
+    <footer>
+      <p>Lindy Zeng, lindy@princeton.edu</p>
+    </footer>
+
+  </div>
+  <div id="map"></div>
+  <div id="map2"</div>
+</body>
+</html>
