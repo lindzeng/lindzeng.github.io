@@ -110,8 +110,6 @@ function initMap() {
     // Browser doesn't support Geolocation
     handleLocationError(false);
   }
-  
-  //food = "41717 Palm Ave, Fremont, CA 94539";
  
   // Convert address to latitude-longitude for the search.
   end = "282 2nd Street 4th floor, San Francisco, CA 94105"; // ClickTime office address
@@ -134,21 +132,17 @@ function initMap() {
     calculateAndDisplayRoute(food, end, directionsService2, directionsDisplay2);
   };
     document.getElementById('mode').addEventListener('change', onChangeHandler);
-}
+  
 // Get waypoint search result.
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
-    //var marker = new google.maps.Marker({
-     // map: map,
-     // place: {
-     //   placeId: results[0].place_id,
-     //   location: results[0].geometry.location
-    //  }
-    //});
     food = results[0].geometry.location;
   }
-} 
+}
+
 google.maps.event.addDomListener(window, 'load', initMap);
+}
+
 function geocodeAddress(geocoder) {
   var address = end;
   geocoder.geocode({'address': address}, function(results, status) {
