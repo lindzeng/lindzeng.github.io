@@ -112,7 +112,7 @@ function initMap() {
   });
   var infoWindow = new google.maps.InfoWindow({map: map});
   directionsDisplay.setMap(map);
-  directionsDisplay.setPanel(document.getElementById('right-panel'));
+  directionsDisplay.setPanel(document.getElementById('left-panel'));
   var control = document.getElementById('floating-panel');
   control.style.display = 'block';
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
