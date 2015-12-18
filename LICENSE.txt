@@ -1,3 +1,5 @@
+I've adapted Photon by HTML5 UP for personal use by changing the color scheme and header links.
+
 Creative Commons Attribution 3.0 Unported
 http://creativecommons.org/licenses/by/3.0/
 
