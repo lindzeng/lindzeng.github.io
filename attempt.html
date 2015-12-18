@@ -15,6 +15,7 @@
       }
     </style>
     <script>
+
 var map;
 var infowindow;
 var pyrmontLatLng;
@@ -52,7 +53,7 @@ function geocodeAddress(geocoder, address) {
 }
 
 function callback(results, status) {
-  if (status === google.maps.places.PlacesServiceStatus.OK) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       createMarker(results[i]);
     }
