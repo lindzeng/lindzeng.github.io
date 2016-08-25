@@ -2809,7 +2809,7 @@
 		background-color: #492B49;
 		color: rgba(255, 255, 255, 0.75);
 		background-attachment: fixed,							fixed,							fixed;
-		<!--background-image: url("../../images/mt_shasta.jpg");-->
+		background-image: url("../../images/mt_shasta.jpg");
 		background-size: auto,							cover,							cover;
 		overflow: hidden;
 		position: relative;
@@ -2994,7 +2994,7 @@
 		background-color: #492B49;
 		color: rgba(255, 255, 255, 0.75);
 		background-attachment: fixed,							fixed,							fixed;
-		<!--background-image: url("../../images/mt_shasta.jpg");-->
+		background-image: url("../../images/mt_shasta.jpg");
 		background-position: top left,						center center,					center center;
 		background-size: auto,							cover,							cover;
 		text-align: center;
