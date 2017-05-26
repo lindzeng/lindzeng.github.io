@@ -1,0 +1,14 @@
+a:link    {color:#9DAB4C; background-color:transparent; text-decoration:none}
+a:visited {color:#796C6A; background-color:transparent; text-decoration:none}
+a:hover   {color:#171730; background-color:transparent; text-decoration:none}
+
+body {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+body, h1, h2, h3 {
+    font-family: 'Lato', sans-serif;
+}
