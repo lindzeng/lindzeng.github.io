@@ -1,4 +1,4 @@
 # Personal Website
-http://lindyzeng.me
+http://lindzeng.github.io
 
-Last updated: May 2017
+Last updated: July 2017
