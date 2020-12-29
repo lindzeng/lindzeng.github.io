@@ -1,53 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+title: lindy zeng
+image: assets/img/lindy.jpg
+---
 
-<head>
-
+<!doctype html>
+<html>
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Lindy Zeng's Personal Website">
-    <meta name="author" content="Lindy Zeng">
+    <meta name="description" content="hi i'm lindy zeng">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <title>{{ page.title }}</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left column">
+        <h1>
+          hi, i'm lindy!
+        </h1>
 
-    <title>Lindy Zeng</title>
+        <p>
+          I am a software engineer at <a href="https://squareup.com" target="_blank">Square</a> and based in San Francisco, California.
+          I graduated from <a href="https://princeton.edu" target="_blank">Princeton University</a> in 2018 
+          with a degree in Computer Science and a minor in Environmental Studies.
+          Previously, I interned at <a href="https://strava.com" target="_blank">Strava</a> 
+          and at the <a href="https://environment.princeton.edu" target="_blank">High Meadows Environmental Institute</a>.
+        </p>
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <p>
+          If I'm not in front of a laptop screen, you'll most likely find me outdoors — 
+          <a href="https://www.strava.com/athletes/lindz" target="_blank">running</a> 
+          (competing for <a href="https://www.westvalleytc.com" target="_blank">West Valley Track Club</a>, 
+          meandering the streets of SF, exploring the Bay's trails),
+          skiing, hiking, camping, or backpacking. (But I could also be indoors working on a crochet project.)
+        </p>
 
-    <!-- Custom CSS -->
-    <link href="css/main.css" rel="stylesheet">
-    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-</head>
-
-<body>
-    <!-- Page Content -->
-        <div class="w3-container w3-center">
-            <div class="w3-mobile w3-padding-16">
-                <img class="w3-image w3-circle" src="prof.jpg">
-            </div>
-            <div class="w3-mobile">
-                <h1>Lindy Zeng</h1>
-                <p class="lead"><br>
-                    <br>
-                    <a href="mailto:lindy@princeton.edu"><i class="fa fa-envelope fa-3x fa-fw " aria-hidden="true"></i></a>
-                    <a href="https://www.linkedin.com/in/lindyzeng" target="_blank"><i class="fa fa-linkedin fa-3x fa-fw" aria-hidden="true"></i></a>
-                    <a href="https://github.com/lindzeng" target="_blank"><i class="fa fa-github fa-3x fa-fw" aria-hidden="true"></i></a>
-                    <a href="https://medium.com/@lindzeng" target="_blank"><i class="fa fa-medium fa-3x fa-fw" aria-hidden="true"></i></a>
-                    <a href="https://www.strava.com/athletes/lindyzeng" target="_blank"><i class="fa fa-link fa-3x fa-fw" aria-hidden="true"></i></a>
-                </p>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="w3-container w3-center">
-            <p>Copyright &copy; Lindy Zeng 2017</p>
-        </div>
-
+         <h3>
+          <a href="mailto:lindyzeng.lz@gmail.com" target="_blank">email</a> •
+          <a href="https://github.com/lindzeng" target="_blank">github</a> •
+          <a href="/assets/lindyzeng_resume.pdf" target="_blank">resume</a> •
+          <a href="https://www.linkedin.com/in/lindyzeng/" target="_blank">linkedin</a>
+        </h3>
+      </div>
+      <div class="right column">
+        <img class="profile-photo" src="{{ page.image }}" alt="photo of lindy zeng"></img>
+      </div>
     </div>
-
-</body>
-
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+  </body>
 </html>
