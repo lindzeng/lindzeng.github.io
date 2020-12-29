@@ -12,7 +12,7 @@ bundle exec jekyll serve
 ```
 
 ### resources
-- made with `jekyll`
-- fonts from https://fonts.google.com/
-- favicon generated at https://favicon.io/favicon-generator/
-- resume saved on overleaf
+- made with [jekyll](https://jekyllrb.com)
+- fonts from [google](https://fonts.google.com/)
+- favicon generated at [favicon.io](https://favicon.io/favicon-generator/)
+- resume saved on [overleaf](https://www.overleaf.com)
